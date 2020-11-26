@@ -52,7 +52,7 @@ public class TicketManager {
 		Receipt theReceipt = findReceipt(receiptID);
 		if (valid) {
 			this.movieManager.cancelReservation(theReceipt);
-			theReceipt.createRefund();
+			 theReceipt.createRefund();
 			if (theReceipt.isRequireVoucher()) {
 				Voucher voucher = new Voucher();
 				emailManager.emailVoucher(voucher);
