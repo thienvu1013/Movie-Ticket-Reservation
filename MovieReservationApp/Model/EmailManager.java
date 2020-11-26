@@ -73,6 +73,8 @@ public class EmailManager {
 	
 	}
 	
+	
+	//generate email for payments
 	public String createPaymentEmail(Receipt r) {
 		RegisteredUser theUser = (RegisteredUser) r.getUser();
 		String expDate = theUser.getExpDate().toString();
