@@ -23,6 +23,7 @@ public class Receipt {
 	
 	public Receipt(User user,Payment payment) {
 		this.setUser(user);
+		this.payment = payment;
 	}
 	
 	public double createRefund() {
