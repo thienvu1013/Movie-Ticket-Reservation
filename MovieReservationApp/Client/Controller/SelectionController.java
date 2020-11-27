@@ -35,16 +35,18 @@ public class SelectionController {
 		resCtrl.setSelectCtrl(this);
 		cancelCtrl.setSelectCtrl(this);
 		memCtrl.setSelectCtrl(this);
+		selectionGUI.addMainButtonListener(new LoginButtonSelected(),
+				new NonMemButtonSelected(),
+				new MemButtonSelected());
+		selectionGUI.addSecondaryButtonListener(new CancelButtonSelected(),
+				new ReserveButtonSelected());
 	}
 
 	
 	public void startApp() {
-
 		selectionGUI.setVisible(true);
 		selectionGUI.getCl().show(selectionGUI.getLayerPane(),"card2");
-		selectionGUI.addMainButtonListener(new LoginButtonSelected(),
-											new NonMemButtonSelected(),
-											new MemButtonSelected());
+		
 	}
 	
 	//login button pressed start up login view
@@ -98,8 +100,7 @@ public class SelectionController {
 	
 	public void startSecondary() {
 		selectionGUI.getCl().show(selectionGUI.getLayerPane(),"card4");
-		selectionGUI.addSecondaryButtonListener(new CancelButtonSelected(),
-				new ReserveButtonSelected());
+		
 	}
 
 	//not a membership button pressed start up login view
@@ -133,14 +134,14 @@ public class SelectionController {
 	/**
 	 * @return the selectionGUI
 	 */
-	public SelectionGUI getSelectionGUI() {
+	public SelectGUI getSelectionGUI() {
 		return selectionGUI;
 	}
 
 	/**
 	 * @param selectionGUI the selectionGUI to set
 	 */
-	public void setSelectionGUI(SelectionGUI selectionGUI) {
+	public void setSelectionGUI(SelectGUI selectionGUI) {
 		this.selectionGUI = selectionGUI;
 	}
 

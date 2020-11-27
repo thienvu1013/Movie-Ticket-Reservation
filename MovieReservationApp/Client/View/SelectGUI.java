@@ -588,6 +588,8 @@ public class SelectGUI extends javax.swing.JFrame {
                 .addComponent(movieListPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
+        
+        setMovieButtons(movieListPane.getComponents());
 
         LayerPane.add(selectMoviePane, "card5");
         
@@ -752,6 +754,8 @@ public class SelectGUI extends javax.swing.JFrame {
                 .addComponent(timeListPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
+        
+        setTimeButtons(timeListPane.getComponents());
 
         LayerPane.add(selectTimePane, "card11");
         
@@ -1044,6 +1048,8 @@ public class SelectGUI extends javax.swing.JFrame {
                     .addComponent(entrancePane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
+        
+        setSeatButtons(seatListPane.getComponents());
 
         LayerPane.add(selectSeatPane, "card10");
         
@@ -1675,8 +1681,12 @@ public class SelectGUI extends javax.swing.JFrame {
    public void addLoginListener(LoginButtonListener log) {
 	   loginSubmit.addActionListener(log);
    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+   	private java.awt.Component[] seatButtons;
+    private java.awt.Component[] timeButtons;
+   	private java.awt.Component[] movieButtons;
     private javax.swing.JLayeredPane LayerPane;
     private javax.swing.JTextField bankField;
     private javax.swing.JLabel bankLabel;
@@ -2873,5 +2883,29 @@ public class SelectGUI extends javax.swing.JFrame {
 
 	public void setCl(java.awt.CardLayout cl) {
 		this.cl = cl;
+	}
+
+	public java.awt.Component[] getMovieButtons() {
+		return movieButtons;
+	}
+
+	public void setMovieButtons(java.awt.Component[] movieButtons) {
+		this.movieButtons = movieButtons;
+	}
+
+	public java.awt.Component[] getTimeButtons() {
+		return timeButtons;
+	}
+
+	public void setTimeButtons(java.awt.Component[] timeButtons) {
+		this.timeButtons = timeButtons;
+	}
+
+	public java.awt.Component[] getSeatButtons() {
+		return seatButtons;
+	}
+
+	public void setSeatButtons(java.awt.Component[] seatButtons) {
+		this.seatButtons = seatButtons;
 	}
 }

@@ -6,7 +6,13 @@ package Client.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+
+import Client.Controller.SelectionController.LoginButtonSelected;
+import Client.Controller.SelectionController.MemButtonSelected;
+import Client.Controller.SelectionController.NonMemButtonSelected;
 import Client.View.SelectGUI;
 import Model.Message;
 import Model.RegisteredUser;
@@ -31,11 +37,17 @@ public class ReservationController {
 		this.modelCtrl = model;
 		outMessage = new Message();
 		inMessage = new Message();
+		selectGUI.addReservationnButtonListener(new LogoutButtonSelected(),
+				new NonMemButtonSelected(),
+				new MemButtonSelected());
 	}
 
 	public void startView() {
-		// selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"4");
-		// selectionGUI.addSelectButton(......);
+		selectGUI.getCl().show(selectGUI.getLayerPane(),"card5");
+		outMessage.setAction(1);
+		inMessage = modelCtrl.readMessage();
+		ArrayList<String> listofMovies = modelCtrl.createListofMovies(inMessage);
+		displayMovieOptions(listofMovies);
 	}
 
 	// logout button pressed start up login view
@@ -47,7 +59,7 @@ public class ReservationController {
 			// Action 2 - server should erase all saved data and bring back to homepage
 			outMessage.setAction(2);
 			modelCtrl.sendMessage(outMessage);
-			// selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"1");
+			selectCtrl.startApp();
 		}
 
 	}
@@ -63,13 +75,28 @@ public class ReservationController {
 				break;
 				
 			}
-
+	
+	// write movies to display
+	public void displayMovieOptions(ArrayList<String> movies) {
+		int count = 0;
+		for(String i:movies) {
+			JButton button = (JButton) selectGUI.getMovieButtons()[count];
+			button.setText(i);
+			count++;
+		}
 	}
 
-	//loop throuh the list of time and write them on the 
-	public displayListofTime(ArrayList<String> times) {
-			for (String i: time)
+	//loop through the list of time and write them on the 
+	public void displayListofTime(ArrayList<String> times) {
+		int count = 0;
+		for (String i : times) {
+			JButton button = (JButton) selectGUI.getTimeButtons()[count];
+			button.setText(i);
+			count++;
 		}
+	}
+
+	
 
 	// back button pressed start up login view
 	public class Back_3ButtonSelected implements ActionListener {
@@ -82,7 +109,7 @@ public class ReservationController {
 
 	}
 
-	// moviebutton action listener
+	// movie button action listener
 	public class MovieButton implements ActionListener{
 
 			@Override
@@ -90,20 +117,12 @@ public class ReservationController {
 			 * Creates an information packet and send it out to the server, this packet will include the players row and column
 			 */
 			public void actionPerformed(ActionEvent e) {
-				for (int i = 0; i<6; i++) {
-					//get the button thats been pressed
-					if (selectGUI.getMovie()[i] == (JButton) e.getSource()) {
-						outMessage.setInfo(selectGUI.getButton.getText());
-						outMessage.setAction(2);
-						//send the movie title to server server will return a list of available times
-						inMessage =modelCtrl.readMessage();
-						actionCase(inMessage);
-						gui.disableButtons();
-						return;
-					}
+					JButton theButton = (JButton) e.getSource();
+					selectGUI.getCl().show(selectGUI.getLayerPane(),"card11");
+					displayListofTime(modelCtrl.createListofTime(theButton.getText()));
 				}
-		}
-	}
+			}
+
 		
 		
 		

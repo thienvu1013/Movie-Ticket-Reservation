@@ -16,7 +16,7 @@ public class Message implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int action;
 	private String Controller;
-	private String diaglog;
+	private String info;
 	private Serializable object;
 	
 	public Message() {
@@ -40,12 +40,12 @@ public class Message implements Serializable{
 		Controller = controller;
 	}
 
-	public String getDiaglog() {
-		return diaglog;
+	public String getInfo() {
+		return info;
 	}
 
-	public void setDiaglog(String diaglog) {
-		this.diaglog = diaglog;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 	public Serializable getObject() {
