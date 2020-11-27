@@ -3,6 +3,7 @@
  */
 package Client.Controller;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,12 +11,15 @@ import Client.View.SelectionGUI;
 import Model.Message;
 import Model.RegisteredUser;
 
+=======
+>>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
 /**
  * @author Thien Nguyen
  * This class handles reservation operation
  *
  */
 public class ReservationController {
+<<<<<<< HEAD
 	//add loggin GUI here
 		private SelectionGUI selectGUI;
 		private ModelController modelCtrl;
@@ -197,4 +201,7 @@ public class ReservationController {
 
 		
 		
+=======
+
+>>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
 }
