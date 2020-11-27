@@ -76,8 +76,10 @@ public class ReservationController {
 				for (int i = 0; i<6; i++) {
 					//get the button thats been pressed
 					if (selectionGui.getMovie()[i] == (JButton) e.getSource()) {
-						message.setInfo(i);
-						message.setAction(2);
+						outMessage.setInfo(selectionGUI.getButton.getText());
+						outMessage.setAction(2);
+						
+						inMessage =modelCtrl.getMessage();
 						gui.disableButtons();
 						return;
 					}
