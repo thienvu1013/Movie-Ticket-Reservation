@@ -57,6 +57,7 @@ public class LoginController {
 		//action 1 for server side - check user credential
 
 		if(inMessage.getAction() ==1) {
+			modelCtrl.setRUser(this.user);
 			accept();
 		}
 		else {

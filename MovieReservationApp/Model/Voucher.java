@@ -3,6 +3,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.Random;
@@ -11,7 +12,11 @@ import java.util.Random;
  * @author Thien Nguyen
  *
  */
-public class Voucher{
+public class Voucher implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private Date expDate;
 		

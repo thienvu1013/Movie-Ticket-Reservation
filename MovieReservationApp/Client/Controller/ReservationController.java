@@ -64,17 +64,6 @@ public class ReservationController {
 
 	}
 
-	public void actionCase(Message message) {
-			int choice = message.getAction();
-			switch(choice) {
-			//display movie time 
-			}
-			case 1:
-				ArrayList<String> times = message.getObject();
-				displayListofTime(times);
-				break;
-				
-			}
 	
 	// write movies to display
 	public void displayMovieOptions(ArrayList<String> movies) {
@@ -95,33 +84,154 @@ public class ReservationController {
 			count++;
 		}
 	}
+	
+	public void displayListofSeat(ArrayList<String> seats) {
+		int count = 0;
+		for (String i : seats) {
+			JButton button = (JButton) selectGUI.getTimeButtons()[count];
+			if (i.equals("TAKEN")) {
+				button.setForeground(new java.awt.Color(255, 0, 110));
+			}
+			button.setText(i);
+			count++;
+		}
+	}
+	
+	public void displayTicket() {
+		String ticketID = Integer.toString(modelCtrl.getTheTicket().getTicketId());
+		String showtime = modelCtrl.getTheTicket().getTime().getTime();
+		String seat = modelCtrl.getTheTicket().getSeat().toString();
+		String movie = modelCtrl.getTheTicket().getMovie().getTitle();
+		String price = String.format( "%.2f",modelCtrl.getTheTicket().getPrice());
+		
+		
+	}
 
 	
 
 	// back button pressed start up login view
-	public class Back_3ButtonSelected implements ActionListener {
+	public class MBackSelected implements ActionListener {
 
 		@Override
 		// need to modify this later once GUI is completed
 		public void actionPerformed(ActionEvent arg0) {
-			// selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"1");
+			selectGUI.getCl().show(selectGUI.getLayerPane(),"card4");
 		}
 
 	}
+	
+	public class TBackSelected implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			selectGUI.getCl().show(selectGUI.getLayerPane(),"card5");
+		}
+
+	}
+	
+	public class SBackSelected implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			selectGUI.getCl().show(selectGUI.getLayerPane(),"card11");
+		}
+
+	}
+	
+	public class iBackSelected implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			selectGUI.getCl().show(selectGUI.getLayerPane(),"card10");
+		}
+
+	}
+	
 
 	// movie button action listener
-	public class MovieButton implements ActionListener{
+	public class MovieButton implements ActionListener {
 
-			@Override
-			/**
-			 * Creates an information packet and send it out to the server, this packet will include the players row and column
-			 */
-			public void actionPerformed(ActionEvent e) {
-					JButton theButton = (JButton) e.getSource();
-					selectGUI.getCl().show(selectGUI.getLayerPane(),"card11");
-					displayListofTime(modelCtrl.createListofTime(theButton.getText()));
-				}
+		@Override
+		/**
+		 * Creates an information packet and send it out to the server, this packet will
+		 * include the players row and column
+		 */
+		public void actionPerformed(ActionEvent e) {
+			JButton theButton = (JButton) e.getSource();
+			selectGUI.getCl().show(selectGUI.getLayerPane(), "card11");
+			displayListofTime(modelCtrl.createListofTime(theButton.getText()));
+		}
+	}
+	
+	// time button action listener
+	public class TimeButton implements ActionListener {
+
+		@Override
+		/**
+		 * Creates an information packet and send it out to the server, this packet will
+		 * include the players row and column
+		 */
+		public void actionPerformed(ActionEvent e) {
+			JButton theButton = (JButton) e.getSource();
+			selectGUI.getCl().show(selectGUI.getLayerPane(), "card10");
+			displayListofSeat(modelCtrl.createListSeat(theButton.getText()));
+		}
+	}
+	
+	// seat button action listener
+	public class SeatButton implements ActionListener {
+
+		@Override
+		/**
+		 * Creates an information packet and send it out to the server, this packet will
+		 * include the players row and column
+		 */
+		public void actionPerformed(ActionEvent e) {
+			JButton theButton = (JButton) e.getSource();
+			modelCtrl.reserveSeat(theButton.getText());
+			if(modelCtrl.checkUser()) {
+				selectGUI.getCl().show(selectGUI.getLayerPane(), "card9");
 			}
+			else {
+				//create ticket;
+				if(modelCtrl.constructRticket()) {
+					displayTicket();
+				}
+				else {
+					displayError();
+				}
+				selectGUI.getCl().show(selectGUI.getLayerPane(), "card8");
+				//display the ticket
+			}
+			
+		}
+	}
+
+	public class infoSubmit implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			String bank = selectGUI.getBankField().getText();
+			String voucher = selectGUI.getVoucherField().getText();
+			String email = selectGUI.getEmailField().getText();
+			//create ticket;
+			if(modelCtrl.constructOticket(email, voucher, bank)) {
+				displayTicket();
+			}else {
+				displayError();
+			}
+			selectGUI.getCl().show(selectGUI.getLayerPane(),"card8");
+			//display the ticket
+		}
+
+	}
+	
+
+
 
 		
 		

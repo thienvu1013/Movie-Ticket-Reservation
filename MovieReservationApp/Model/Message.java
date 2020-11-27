@@ -17,6 +17,7 @@ public class Message implements Serializable{
 	private int action;
 	private String Controller;
 	private String info;
+	private Voucher voucher;
 	private Serializable object;
 	
 	public Message() {
@@ -54,6 +55,20 @@ public class Message implements Serializable{
 
 	public void setObject(Serializable object) {
 		this.object = object;
+	}
+
+	/**
+	 * @return the voucher
+	 */
+	public Voucher getVoucher() {
+		return voucher;
+	}
+
+	/**
+	 * @param voucher the voucher to set
+	 */
+	public void setVoucher(Voucher voucher) {
+		this.voucher = voucher;
 	}
 	
 }

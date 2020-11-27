@@ -109,6 +109,7 @@ public class SelectionController {
 			@Override
 			//need to modify this later once GUI is completed 
 			public void actionPerformed(ActionEvent arg0) {
+				modelCtrl.setOUser();
 				startSecondary();
 				
 					

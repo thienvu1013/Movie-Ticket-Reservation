@@ -20,6 +20,7 @@ public class Seat {
 
 	}
 	
+	
 	public void cancelReservation() {
 		this.taken = false;
 	}
@@ -27,6 +28,8 @@ public class Seat {
 	public void reserve() {
 		this.taken = true;
 	}
+	
+	
 
 	/**
 	 * @return the rowNum
@@ -68,5 +71,10 @@ public class Seat {
 	 */
 	public void setTaken(boolean taken) {
 		this.taken = taken;
+	}
+
+	@Override
+	public String toString() {
+		return rowNum+"-"+rowLetter;
 	}
 }
