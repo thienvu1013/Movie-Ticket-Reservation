@@ -39,7 +39,10 @@ public class SelectionController {
 
 	
 	public void startApp() {
+
+		//this should be card 1
 		selectionGUI.setVisible(true);
+		//selectionGUI.addSelectButton(......);
 	}
 	
 	//login button pressed start up login view
@@ -90,8 +93,21 @@ public class SelectionController {
 		}
 			
 	}
+
+	//not a membership button pressed start up login view
+		public class NonMemButtonSelected implements ActionListener{
+
+			@Override
+			//need to modify this later once GUI is completed 
+			public void actionPerformed(ActionEvent arg0) {
+				//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
+					
+			}
+				
+		}
+		
 	
-	
+
 	
 	
 	
