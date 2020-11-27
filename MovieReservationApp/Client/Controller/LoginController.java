@@ -18,11 +18,8 @@ import Model.User;
  */
 public class LoginController {
 	//add loggin GUI here
-<<<<<<< HEAD
+
 	private SelectionGUI selectGUI;
-=======
-	private SelectionGUI selectionGUI;
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
 	private ModelController modelCtrl;
 	private boolean logginIn = false;
 	private RegisteredUser user;
@@ -33,25 +30,24 @@ public class LoginController {
 	
 	//add GUI to constructor
 	public LoginController(SelectionGUI selectionView, ModelController model) {
-<<<<<<< HEAD
+
 		this.selectGUI = selectionView;
-=======
+
 		this.selectionGUI = selectionView;
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
+
 		this.modelCtrl = model;
 		user = new RegisteredUser();
 		outMessage = new Message();
 		inMessage = new Message();
 	}
 	
-<<<<<<< HEAD
+
 	public void startView() {
 		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"2");
 		//selectionGUI.addSelectButton(......);
 	}
 	
-	
-=======
+
 	public void startApp(SelectionController selCtrl) {
 		this.selectCtrl = selCtrl;
 		while(true) {
@@ -62,18 +58,16 @@ public class LoginController {
 		}
 	}
 	
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
+
 	//need to update once we know the action case for loggin in
 	public void verifyUser() {
 		outMessage.setAction(1);
 		outMessage.setObject(this.getUser());
 		modelCtrl.sendMessage(outMessage);
 		inMessage = modelCtrl.getMessage();
-		
-<<<<<<< HEAD
+
 		//action 1 for serverside - check user credential
-=======
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
+
 		if(inMessage.getAction() ==1) {
 			accept();
 		}
@@ -82,8 +76,7 @@ public class LoginController {
 			deny();
 		}
 	}
-	
-<<<<<<< HEAD
+
 	public void accept() {
 		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
 	}
@@ -99,14 +92,13 @@ public class LoginController {
 	
 	
 
-=======
 	
 	
 	
 	public void startApp() {
 		selectionGUI.setVisible(true);
 	}
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
+
 	
 	
 	public class LoginButtonListener implements ActionListener{
@@ -114,13 +106,9 @@ public class LoginController {
 		@Override
 		//need to modify this later once GUI is completed 
 		public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
-			user.setEmail(selectGUI.getUserField().getText());
-			user.setPassword(selectGUI.getPassField().getPassword());
-=======
+
 			user.setEmail(loginGUI.getUserField().getText());
 			user.setPassword(loginGUI.getPassField().getPassword());
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
 			setLoginIn(true);
 			verifyUser();
 			
@@ -130,14 +118,7 @@ public class LoginController {
 	
 	
 	
-	
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
->>>>>>> 9ed9d6df84021b439a41d1e4d6c94dbd6304ce77
+
 	//getters and setters
 
 
