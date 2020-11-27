@@ -43,8 +43,8 @@ public class SelectionController {
 		selectionGUI.setVisible(true);
 		selectionGUI.getCl().show(selectionGUI.getLayerPane(),"card2");
 		selectionGUI.addMainButtonListener(new LoginButtonSelected(),
-											new MemButtonSelected(),
-											new NonMemButtonSelected());
+											new NonMemButtonSelected(),
+											new MemButtonSelected());
 	}
 	
 	//login button pressed start up login view

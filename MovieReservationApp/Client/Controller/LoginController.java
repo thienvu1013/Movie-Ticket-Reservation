@@ -5,9 +5,7 @@ package Client.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import Client.View.SelectGUI;
-import Client.View.SelectionGUI;
 import Model.Message;
 import Model.RegisteredUser;
 import Model.User;
@@ -42,19 +40,21 @@ public class LoginController {
 
 	public void startView() {
 		selectGUI.getCl().show(selectGUI.getLayerPane(),"card3");
-		//selectionGUI.addSelectButton(......);
+		selectGUI.addLoginListener(new LoginButtonListener());
 	}
 	
 	
 
 	//need to update once we know the action case for loggin in
 	public void verifyUser() {
+		user.setEmail(selectGUI.getUsernameField().getText());
+		user.setPassword(selectGUI.getPasswordField().getPassword().toString());
 		outMessage.setAction(1);
 		outMessage.setObject(this.getUser());
 		modelCtrl.sendMessage(outMessage);
 		inMessage = modelCtrl.readMessage();
 
-		//action 1 for serverside - check user credential
+		//action 1 for server side - check user credential
 
 		if(inMessage.getAction() ==1) {
 			accept();
@@ -66,11 +66,11 @@ public class LoginController {
 	}
 
 	public void accept() {
-		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
+		selectCtrl.startSecondary();
 	}
 	
 	public void deny() {
-		//selectGUI.getUserField().getText("");
+		selectGUI.getUsernameField().setText("INVALID CREDENTIALS");
 	}
 	
 	
@@ -79,12 +79,7 @@ public class LoginController {
 		@Override
 		//need to modify this later once GUI is completed 
 		public void actionPerformed(ActionEvent arg0) {
-
-			user.setEmail(loginGUI.getUserField().getText());
-			user.setPassword(loginGUI.getPassField().getPassword());
-			setLoginIn(true);
 			verifyUser();
-			
 		}
 		
 	}

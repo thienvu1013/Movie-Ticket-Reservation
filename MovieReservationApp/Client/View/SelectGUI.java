@@ -1,6 +1,7 @@
 
 package Client.View;
 
+import Client.Controller.LoginController.LoginButtonListener;
 import Client.Controller.SelectionController.CancelButtonSelected;
 import Client.Controller.SelectionController.LoginButtonSelected;
 import Client.Controller.SelectionController.MemButtonSelected;
@@ -1669,6 +1670,11 @@ public class SelectGUI extends javax.swing.JFrame {
     	cancelButton.addActionListener(can);
     	reserveButton.addActionListener(res);
     }
+    
+    //login window
+   public void addLoginListener(LoginButtonListener log) {
+	   loginSubmit.addActionListener(log);
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane LayerPane;
