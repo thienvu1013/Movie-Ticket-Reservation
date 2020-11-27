@@ -18,7 +18,8 @@ import Model.User;
  */
 public class LoginController {
 	//add loggin GUI here
-	private SelectionGUI selectionGUI;
+
+	private SelectionGUI selectGUI;
 	private ModelController modelCtrl;
 	private boolean logginIn = false;
 	private RegisteredUser user;
@@ -29,13 +30,24 @@ public class LoginController {
 	
 	//add GUI to constructor
 	public LoginController(SelectionGUI selectionView, ModelController model) {
+
+		this.selectGUI = selectionView;
+
 		this.selectionGUI = selectionView;
+
 		this.modelCtrl = model;
 		user = new RegisteredUser();
 		outMessage = new Message();
 		inMessage = new Message();
 	}
 	
+
+	public void startView() {
+		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"2");
+		//selectionGUI.addSelectButton(......);
+	}
+	
+
 	public void startApp(SelectionController selCtrl) {
 		this.selectCtrl = selCtrl;
 		while(true) {
@@ -46,13 +58,16 @@ public class LoginController {
 		}
 	}
 	
+
 	//need to update once we know the action case for loggin in
 	public void verifyUser() {
 		outMessage.setAction(1);
 		outMessage.setObject(this.getUser());
 		modelCtrl.sendMessage(outMessage);
 		inMessage = modelCtrl.getMessage();
-		
+
+		//action 1 for serverside - check user credential
+
 		if(inMessage.getAction() ==1) {
 			accept();
 		}
@@ -61,13 +76,29 @@ public class LoginController {
 			deny();
 		}
 	}
+
+	public void accept() {
+		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
+	}
 	
+	public void deny() {
+		//selectGUI.getUserField().getText("");
+	}
+	
+	
+
+	
+	
+	
+	
+
 	
 	
 	
 	public void startApp() {
 		selectionGUI.setVisible(true);
 	}
+
 	
 	
 	public class LoginButtonListener implements ActionListener{
@@ -75,6 +106,7 @@ public class LoginController {
 		@Override
 		//need to modify this later once GUI is completed 
 		public void actionPerformed(ActionEvent arg0) {
+
 			user.setEmail(loginGUI.getUserField().getText());
 			user.setPassword(loginGUI.getPassField().getPassword());
 			setLoginIn(true);
@@ -86,7 +118,7 @@ public class LoginController {
 	
 	
 	
-	
+
 	//getters and setters
 
 
