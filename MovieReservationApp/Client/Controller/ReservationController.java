@@ -7,7 +7,7 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Client.View.SelectionGUI;
+import Client.View.SelectGUI;
 import Model.Message;
 import Model.RegisteredUser;
 
@@ -19,14 +19,14 @@ import Model.RegisteredUser;
 public class ReservationController {
 
 	// add loggin GUI here
-	private SelectionGUI selectGUI;
+	private SelectGUI selectGUI;
 	private ModelController modelCtrl;
 	private Message outMessage;
 	private Message inMessage;
 	private SelectionController selectCtrl;
 
 	// add GUI to constructor
-	public ReservationController(SelectionGUI selectionView, ModelController model) {
+	public ReservationController(SelectGUI selectionView, ModelController model) {
 		this.selectGUI = selectionView;
 		this.modelCtrl = model;
 		outMessage = new Message();
@@ -92,17 +92,18 @@ public class ReservationController {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i<6; i++) {
 					//get the button thats been pressed
-					if (selectionGui.getMovie()[i] == (JButton) e.getSource()) {
-						outMessage.setInfo(selectionGUI.getButton.getText());
+					if (selectGUI.getMovie()[i] == (JButton) e.getSource()) {
+						outMessage.setInfo(selectGUI.getButton.getText());
 						outMessage.setAction(2);
 						//send the movie title to server server will return a list of available times
-						inMessage =modelCtrl.getMessage();
+						inMessage =modelCtrl.readMessage();
 						actionCase(inMessage);
 						gui.disableButtons();
 						return;
 					}
 				}
 		}
+	}
 		
 		
 		
@@ -125,7 +126,7 @@ public class ReservationController {
 		/**
 		 * @return the selectGUI
 		 */
-		public SelectionGUI getSelectGUI() {
+		public SelectGUI getSelectGUI() {
 			return selectGUI;
 		}
 
@@ -133,7 +134,7 @@ public class ReservationController {
 		/**
 		 * @param selectGUI the selectGUI to set
 		 */
-		public void setSelectGUI(SelectionGUI selectGUI) {
+		public void setSelectGUI(SelectGUI selectGUI) {
 			this.selectGUI = selectGUI;
 		}
 
@@ -153,21 +154,6 @@ public class ReservationController {
 			this.modelCtrl = modelCtrl;
 		}
 
-
-		/**
-		 * @return the user
-		 */
-		public RegisteredUser getUser() {
-			return user;
-		}
-
-
-		/**
-		 * @param user the user to set
-		 */
-		public void setUser(RegisteredUser user) {
-			this.user = user;
-		}
 
 
 		/**

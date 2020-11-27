@@ -6,6 +6,7 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Client.View.SelectGUI;
 import Client.View.SelectionGUI;
 import Model.Message;
 import Model.RegisteredUser;
@@ -19,7 +20,7 @@ import Model.User;
 public class LoginController {
 	//add loggin GUI here
 
-	private SelectionGUI selectGUI;
+	private SelectGUI selectGUI;
 	private ModelController modelCtrl;
 	private boolean logginIn = false;
 	private RegisteredUser user;
@@ -29,12 +30,9 @@ public class LoginController {
 	
 	
 	//add GUI to constructor
-	public LoginController(SelectionGUI selectionView, ModelController model) {
+	public LoginController(SelectGUI selectionView, ModelController model) {
 
-		this.selectGUI = selectionView;
-
-		this.selectionGUI = selectionView;
-
+		this.setSelectGUI(selectionView);
 		this.modelCtrl = model;
 		user = new RegisteredUser();
 		outMessage = new Message();
@@ -43,20 +41,10 @@ public class LoginController {
 	
 
 	public void startView() {
-		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"2");
+		selectGUI.getCl().show(selectGUI.getLayerPane(),"card3");
 		//selectionGUI.addSelectButton(......);
 	}
 	
-
-	public void startApp(SelectionController selCtrl) {
-		this.selectCtrl = selCtrl;
-		while(true) {
-			if(logginIn == true) {
-				break;
-			}
-			continue;
-		}
-	}
 	
 
 	//need to update once we know the action case for loggin in
@@ -64,7 +52,7 @@ public class LoginController {
 		outMessage.setAction(1);
 		outMessage.setObject(this.getUser());
 		modelCtrl.sendMessage(outMessage);
-		inMessage = modelCtrl.getMessage();
+		inMessage = modelCtrl.readMessage();
 
 		//action 1 for serverside - check user credential
 
@@ -84,21 +72,6 @@ public class LoginController {
 	public void deny() {
 		//selectGUI.getUserField().getText("");
 	}
-	
-	
-
-	
-	
-	
-	
-
-	
-	
-	
-	public void startApp() {
-		selectionGUI.setVisible(true);
-	}
-
 	
 	
 	public class LoginButtonListener implements ActionListener{
@@ -204,6 +177,22 @@ public class LoginController {
 	 */
 	public void setSelectCtrl(SelectionController selectCtrl) {
 		this.selectCtrl = selectCtrl;
+	}
+
+
+	/**
+	 * @return the selectGUI
+	 */
+	public SelectGUI getSelectGUI() {
+		return selectGUI;
+	}
+
+
+	/**
+	 * @param selectGUI the selectGUI to set
+	 */
+	public void setSelectGUI(SelectGUI selectGUI) {
+		this.selectGUI = selectGUI;
 	}
 
 }

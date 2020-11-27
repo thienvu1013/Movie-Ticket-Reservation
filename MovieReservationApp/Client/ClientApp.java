@@ -10,6 +10,7 @@ import Client.Controller.MembershipController;
 import Client.Controller.ModelController;
 import Client.Controller.ReservationController;
 import Client.Controller.SelectionController;
+import Client.View.SelectGUI;
 
 /**
  * @author Thien Nguyen
@@ -21,12 +22,12 @@ public class ClientApp {
 		int portNumber = 9090;
 		String serverName = "localhost";
 		//instantiate the view here
-		//selection view
+		SelectGUI selectionView = new SelectGUI();
 		ClientController clientCtrl = new ClientController(serverName, portNumber);
+		ModelController modelCtrl = new ModelController(clientCtrl, modelCtrl);
 		CancellationController cancelCtrl = new CancellationController(selectionView, modelCtrl);
 		ReservationController resCtrl = new ReservationController(selectionView, modelCtrl);
 		MembershipController memCtrl = new MembershipController(selectionView, modelCtrl);
-		ModelController modelCtrl = new ModelController(clientCtrl, modelCtrl);
 		LoginController logCtrl = new LoginController(selectionView, modelCtrl);
 		SelectionController selCtrl = new SelectionController(selectionView,cancelCtrl, resCtrl, memCtrl,logCtrl, modelCtrl);
 		selCtrl.startApp();

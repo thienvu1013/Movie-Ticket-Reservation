@@ -6,7 +6,7 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Client.View.SelectionGUI;
+import Client.View.SelectGUI;
 import Model.Message;
 
 /**
@@ -14,7 +14,7 @@ import Model.Message;
  * This class handles all operation of reservation 
  */
 public class SelectionController {
-	private SelectionGUI selectionGUI;
+	private SelectGUI selectionGUI;
 	private CancellationController cancelCtrl;
 	private ReservationController resCtrl;
 	private MembershipController memCtrl;
@@ -24,7 +24,7 @@ public class SelectionController {
 	private Message inMessage;
 	private int options = -1;
 	
-	public SelectionController(SelectionGUI selectionView,CancellationController cancelCtrl, ReservationController resCtrl, MembershipController memCtrl,LoginController logCtrl, ModelController modelCtrl) {
+	public SelectionController(SelectGUI selectionView,CancellationController cancelCtrl, ReservationController resCtrl, MembershipController memCtrl,LoginController logCtrl, ModelController modelCtrl) {
 		this.selectionGUI = selectionView;
 		this.cancelCtrl = cancelCtrl;
 		this.resCtrl = resCtrl;
@@ -40,9 +40,11 @@ public class SelectionController {
 	
 	public void startApp() {
 
-		//this should be card 1
 		selectionGUI.setVisible(true);
-		//selectionGUI.addSelectButton(......);
+		selectionGUI.getCl().show(selectionGUI.getLayerPane(),"card2");
+		selectionGUI.addMainButtonListener(new LoginButtonSelected(),
+											new MemButtonSelected(),
+											new NonMemButtonSelected());
 	}
 	
 	//login button pressed start up login view
@@ -93,6 +95,12 @@ public class SelectionController {
 		}
 			
 	}
+	
+	public void startSecondary() {
+		selectionGUI.getCl().show(selectionGUI.getLayerPane(),"card4");
+		selectionGUI.addSecondaryButtonListener(new CancelButtonSelected(),
+				new ReserveButtonSelected());
+	}
 
 	//not a membership button pressed start up login view
 		public class NonMemButtonSelected implements ActionListener{
@@ -100,7 +108,8 @@ public class SelectionController {
 			@Override
 			//need to modify this later once GUI is completed 
 			public void actionPerformed(ActionEvent arg0) {
-				//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
+				startSecondary();
+				
 					
 			}
 				
