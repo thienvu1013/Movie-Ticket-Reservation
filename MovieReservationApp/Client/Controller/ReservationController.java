@@ -37,9 +37,10 @@ public class ReservationController {
 		this.modelCtrl = model;
 		outMessage = new Message();
 		inMessage = new Message();
-		selectGUI.addReservationnButtonListener(new LogoutButtonSelected(),
-				new NonMemButtonSelected(),
-				new MemButtonSelected());
+		selectGUI.addReservationButtonListener(new LogoutButtonSelected(),
+				new MBackSelected(),new TBackSelected(),new SBackSelected(),
+				new iBackSelected(),new MovieButton(), new TimeButton(),
+				new SeatButton(), new infoSubmit(),new paySubmit(),new cancelButton());
 	}
 
 	public void startView() {
@@ -103,8 +104,20 @@ public class ReservationController {
 		String seat = modelCtrl.getTheTicket().getSeat().toString();
 		String movie = modelCtrl.getTheTicket().getMovie().getTitle();
 		String price = String.format( "%.2f",modelCtrl.getTheTicket().getPrice());
-		
-		
+		selectGUI.getTicketID().setText(ticketID);
+		selectGUI.getTime().setText(showtime);
+		selectGUI.getMovie().setText(movie);
+		selectGUI.getSeat().setText(seat);
+		selectGUI.getPrice().setText(price);
+	}
+	
+	public void displayError() {
+		String message = "ERROR";
+		selectGUI.getTicketID().setText(message);
+		selectGUI.getTime().setText(message);
+		selectGUI.getMovie().setText(message);
+		selectGUI.getSeat().setText(message);
+		selectGUI.getPrice().setText(message);
 	}
 
 	
@@ -204,7 +217,6 @@ public class ReservationController {
 					displayError();
 				}
 				selectGUI.getCl().show(selectGUI.getLayerPane(), "card8");
-				//display the ticket
 			}
 			
 		}
@@ -230,109 +242,101 @@ public class ReservationController {
 
 	}
 	
+	public class paySubmit implements ActionListener {
 
-
-
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		/**
-		 * @return the selectGUI
-		 */
-		public SelectGUI getSelectGUI() {
-			return selectGUI;
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			if(modelCtrl.reserveTicket()) {
+				selectGUI.getSuccessLabel().setText("SUCCESS");
+				
+			}else {
+				selectGUI.getSuccessLabel().setText("ERROR");
+			}
+			selectGUI.getSuccessLabel().setVisible(true);
 		}
 
+	}
+	
+	public class cancelButton implements ActionListener {
 
-		/**
-		 * @param selectGUI the selectGUI to set
-		 */
-		public void setSelectGUI(SelectGUI selectGUI) {
-			this.selectGUI = selectGUI;
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			// Action 2 - server should erase all saved data and bring back to homepage
+			selectGUI.getCl().show(selectGUI.getLayerPane(), "card4");
 		}
 
+	}
 
-		/**
-		 * @return the modelCtrl
-		 */
-		public ModelController getModelCtrl() {
-			return modelCtrl;
-		}
+	/**
+	 * @return the selectGUI
+	 */
+	public SelectGUI getSelectGUI() {
+		return selectGUI;
+	}
 
+	/**
+	 * @param selectGUI the selectGUI to set
+	 */
+	public void setSelectGUI(SelectGUI selectGUI) {
+		this.selectGUI = selectGUI;
+	}
 
-		/**
-		 * @param modelCtrl the modelCtrl to set
-		 */
-		public void setModelCtrl(ModelController modelCtrl) {
-			this.modelCtrl = modelCtrl;
-		}
+	/**
+	 * @return the modelCtrl
+	 */
+	public ModelController getModelCtrl() {
+		return modelCtrl;
+	}
 
+	/**
+	 * @param modelCtrl the modelCtrl to set
+	 */
+	public void setModelCtrl(ModelController modelCtrl) {
+		this.modelCtrl = modelCtrl;
+	}
 
+	/**
+	 * @return the outMessage
+	 */
+	public Message getOutMessage() {
+		return outMessage;
+	}
 
-		/**
-		 * @return the outMessage
-		 */
-		public Message getOutMessage() {
-			return outMessage;
-		}
+	/**
+	 * @param outMessage the outMessage to set
+	 */
+	public void setOutMessage(Message outMessage) {
+		this.outMessage = outMessage;
+	}
 
+	/**
+	 * @return the inMessage
+	 */
+	public Message getInMessage() {
+		return inMessage;
+	}
 
-		/**
-		 * @param outMessage the outMessage to set
-		 */
-		public void setOutMessage(Message outMessage) {
-			this.outMessage = outMessage;
-		}
+	/**
+	 * @param inMessage the inMessage to set
+	 */
+	public void setInMessage(Message inMessage) {
+		this.inMessage = inMessage;
+	}
 
+	/**
+	 * @return the selectCtrl
+	 */
+	public SelectionController getSelectCtrl() {
+		return selectCtrl;
+	}
 
-		/**
-		 * @return the inMessage
-		 */
-		public Message getInMessage() {
-			return inMessage;
-		}
+	/**
+	 * @param selectCtrl the selectCtrl to set
+	 */
+	public void setSelectCtrl(SelectionController selectCtrl) {
+		this.selectCtrl = selectCtrl;
+	}
 
-
-		/**
-		 * @param inMessage the inMessage to set
-		 */
-		public void setInMessage(Message inMessage) {
-			this.inMessage = inMessage;
-		}
-
-
-		/**
-		 * @return the selectCtrl
-		 */
-		public SelectionController getSelectCtrl() {
-			return selectCtrl;
-		}
-
-
-		/**
-		 * @param selectCtrl the selectCtrl to set
-		 */
-		public void setSelectCtrl(SelectionController selectCtrl) {
-			this.selectCtrl = selectCtrl;
-		}
-		
-
-		
-		
     }

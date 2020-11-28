@@ -1,7 +1,22 @@
 
 package Client.View;
 
+import java.awt.Component;
+
+import javax.swing.JButton;
+
 import Client.Controller.LoginController.LoginButtonListener;
+import Client.Controller.ReservationController.LogoutButtonSelected;
+import Client.Controller.ReservationController.MBackSelected;
+import Client.Controller.ReservationController.MovieButton;
+import Client.Controller.ReservationController.SBackSelected;
+import Client.Controller.ReservationController.SeatButton;
+import Client.Controller.ReservationController.TBackSelected;
+import Client.Controller.ReservationController.TimeButton;
+import Client.Controller.ReservationController.cancelButton;
+import Client.Controller.ReservationController.iBackSelected;
+import Client.Controller.ReservationController.infoSubmit;
+import Client.Controller.ReservationController.paySubmit;
 import Client.Controller.SelectionController.CancelButtonSelected;
 import Client.Controller.SelectionController.LoginButtonSelected;
 import Client.Controller.SelectionController.MemButtonSelected;
@@ -1299,6 +1314,7 @@ public class SelectGUI extends javax.swing.JFrame {
         successLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         successLabel.setForeground(new java.awt.Color(224, 122, 95));
         successLabel.setText("SUCCESS!!");
+        successLabel.setVisible(false);
 
         jPanel6.setBackground(new java.awt.Color(224, 122, 95));
 
@@ -1680,6 +1696,42 @@ public class SelectGUI extends javax.swing.JFrame {
     //login window
    public void addLoginListener(LoginButtonListener log) {
 	   loginSubmit.addActionListener(log);
+   }
+   
+   public void addReservationButtonListener(LogoutButtonSelected logout,
+			MBackSelected mback,TBackSelected tback,
+			SBackSelected sback,iBackSelected iback,MovieButton moviebutt,
+			TimeButton timebutt,SeatButton seatbutt,infoSubmit infobutt,
+			paySubmit paybutt,cancelButton canbutt) {
+	   tBack.addActionListener(tback);
+	   mBack.addActionListener(mback);
+	   sBack.addActionListener(sback);
+	   iBack.addActionListener(iback);
+	   mLogout.addActionListener(logout);
+	   tLogout.addActionListener(logout);
+	   sLogout.addActionListener(logout);
+	   iLogout.addActionListener(logout);
+	   cLogout.addActionListener(logout);
+	   submitButton.addActionListener(infobutt);
+	   payButton.addActionListener(paybutt);
+	   cancelButton.addActionListener(canbutt);
+	   for (Component m:movieButtons) {
+		   if(m instanceof JButton) {
+			   ((JButton) m).addActionListener(moviebutt);
+		   }
+	   }
+	   for (Component t:timeButtons) {
+		   if(t instanceof JButton) {
+			   ((JButton) t).addActionListener(timebutt);
+		   }
+	   }
+	   for (Component s:seatButtons) {
+		   if(s instanceof JButton) {
+			   ((JButton) s).addActionListener(seatbutt);
+		   }
+	   }
+	   
+	   
    }
    
 

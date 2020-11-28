@@ -79,6 +79,32 @@ public class ModelController {
 		return success;
 	}
 	
+	public boolean constructOticket(String email, String vouch, String bank) {
+		this.user.setBankInfo(bank);
+		this.user.setEmail(email);
+		outMessage.setAction(3);
+		outMessage.setInfo(vouch);
+		outMessage.setObject(this.user);
+		clientCtrl.sendMessage(outMessage);
+		inMessage = clientCtrl.getMessage();
+		if(inMessage.getInfo().equals("SUCCESS")) {
+			this.theTicket = (Ticket)inMessage.getObject();
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean reserveTicket() {
+		outMessage.setAction(4);
+		outMessage.setObject(theTicket);
+		clientCtrl.sendMessage(outMessage);
+		inMessage = clientCtrl.getMessage();
+		boolean success = (boolean) inMessage.getObject();
+		return success;
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	public ArrayList<String> createListofMovies(Message message) {
 		this.movies =(ArrayList<Movie>) message.getObject();

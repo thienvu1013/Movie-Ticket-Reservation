@@ -24,3 +24,5 @@
 /ReservationController$iBackSelected.class
 /ReservationController$SeatButton.class
 /ReservationController$infoSubmit.class
+/ReservationController$paySubmit.class
+/ReservationController$cancelButton.class

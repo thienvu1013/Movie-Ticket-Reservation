@@ -24,7 +24,7 @@ public class ClientApp {
 		//instantiate the view here
 		SelectGUI selectionView = new SelectGUI();
 		ClientController clientCtrl = new ClientController(serverName, portNumber);
-		ModelController modelCtrl = new ModelController(clientCtrl, modelCtrl);
+		ModelController modelCtrl = new ModelController(clientCtrl);
 		CancellationController cancelCtrl = new CancellationController(selectionView, modelCtrl);
 		ReservationController resCtrl = new ReservationController(selectionView, modelCtrl);
 		MembershipController memCtrl = new MembershipController(selectionView, modelCtrl);
