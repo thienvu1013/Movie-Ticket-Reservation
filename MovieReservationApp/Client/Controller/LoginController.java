@@ -5,8 +5,7 @@ package Client.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import Client.View.SelectionGUI;
+import Client.View.SelectGUI;
 import Model.Message;
 import Model.RegisteredUser;
 import Model.User;
@@ -19,7 +18,7 @@ import Model.User;
 public class LoginController {
 	//add loggin GUI here
 
-	private SelectionGUI selectGUI;
+	private SelectGUI selectGUI;
 	private ModelController modelCtrl;
 	private boolean logginIn = false;
 	private RegisteredUser user;
@@ -29,12 +28,9 @@ public class LoginController {
 	
 	
 	//add GUI to constructor
-	public LoginController(SelectionGUI selectionView, ModelController model) {
+	public LoginController(SelectGUI selectionView, ModelController model) {
 
-		this.selectGUI = selectionView;
-
-		this.selectionGUI = selectionView;
-
+		this.setSelectGUI(selectionView);
 		this.modelCtrl = model;
 		user = new RegisteredUser();
 		outMessage = new Message();
@@ -43,32 +39,25 @@ public class LoginController {
 	
 
 	public void startView() {
-		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"2");
-		//selectionGUI.addSelectButton(......);
+		selectGUI.getCl().show(selectGUI.getLayerPane(),"card3");
+		selectGUI.addLoginListener(new LoginButtonListener());
 	}
 	
-
-	public void startApp(SelectionController selCtrl) {
-		this.selectCtrl = selCtrl;
-		while(true) {
-			if(logginIn == true) {
-				break;
-			}
-			continue;
-		}
-	}
 	
 
 	//need to update once we know the action case for loggin in
 	public void verifyUser() {
+		user.setEmail(selectGUI.getUsernameField().getText());
+		user.setPassword(selectGUI.getPasswordField().getPassword().toString());
 		outMessage.setAction(1);
 		outMessage.setObject(this.getUser());
 		modelCtrl.sendMessage(outMessage);
-		inMessage = modelCtrl.getMessage();
+		inMessage = modelCtrl.readMessage();
 
-		//action 1 for serverside - check user credential
+		//action 1 for server side - check user credential
 
 		if(inMessage.getAction() ==1) {
+			modelCtrl.setRUser(this.user);
 			accept();
 		}
 		else {
@@ -78,27 +67,12 @@ public class LoginController {
 	}
 
 	public void accept() {
-		//selectGUI.getCardLayout().show(selectGUI.getPromptPane(),"3");
+		selectCtrl.startSecondary();
 	}
 	
 	public void deny() {
-		//selectGUI.getUserField().getText("");
+		selectGUI.getUsernameField().setText("INVALID CREDENTIALS");
 	}
-	
-	
-
-	
-	
-	
-	
-
-	
-	
-	
-	public void startApp() {
-		selectionGUI.setVisible(true);
-	}
-
 	
 	
 	public class LoginButtonListener implements ActionListener{
@@ -106,12 +80,7 @@ public class LoginController {
 		@Override
 		//need to modify this later once GUI is completed 
 		public void actionPerformed(ActionEvent arg0) {
-
-			user.setEmail(loginGUI.getUserField().getText());
-			user.setPassword(loginGUI.getPassField().getPassword());
-			setLoginIn(true);
 			verifyUser();
-			
 		}
 		
 	}
@@ -204,6 +173,22 @@ public class LoginController {
 	 */
 	public void setSelectCtrl(SelectionController selectCtrl) {
 		this.selectCtrl = selectCtrl;
+	}
+
+
+	/**
+	 * @return the selectGUI
+	 */
+	public SelectGUI getSelectGUI() {
+		return selectGUI;
+	}
+
+
+	/**
+	 * @param selectGUI the selectGUI to set
+	 */
+	public void setSelectGUI(SelectGUI selectGUI) {
+		this.selectGUI = selectGUI;
 	}
 
 }

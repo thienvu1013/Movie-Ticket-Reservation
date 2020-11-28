@@ -3,16 +3,23 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  * @author thien nguyen
  *
  */
-public class Ticket {
+public class Ticket implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ticketId;
 	private User user;
 	private MovieTime time;
 	private Seat seat;
 	private Movie movie;
+	private double price;
 	
 	public Ticket() {
 		
@@ -24,11 +31,8 @@ public class Ticket {
 		this.time = time;
 		this.seat = seat;
 		this.setMovie(movie);
+		this.price = movie.getPrice();
 	}
-	
-
-	
-	
 	
 	
 	/**
@@ -99,5 +103,19 @@ public class Ticket {
 	 */
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+	}
+
+	/**
+	 * @return the price
+	 */
+	public double getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

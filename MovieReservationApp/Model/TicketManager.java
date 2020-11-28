@@ -31,6 +31,18 @@ public class TicketManager {
 		return theTicket;
 	}
 	
+	public Ticket applyVoucher(Ticket theTicket, int v) {
+		Ticket ticket = theTicket;
+		if(verifyVoucher(v)){
+			ticket.setPrice(ticket.getPrice()*0.15);
+			return ticket;
+		}
+		else {
+			return ticket;
+		}
+	}
+
+	
 	// run this when user accept the ticket
 	public void BuyTicket(Ticket ticket, Payment payment ) {
 		int id = generateID();

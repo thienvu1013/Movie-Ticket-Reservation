@@ -1,9 +1,16 @@
 package Model;
+
+import java.io.Serializable;
+
 /**
  * @author Thien Nguyen
  *
  */
-public abstract class User {
+public abstract class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
 	private String bankInfo;

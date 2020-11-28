@@ -16,7 +16,8 @@ public class Message implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int action;
 	private String Controller;
-	private String diaglog;
+	private String info;
+	private Voucher voucher;
 	private Serializable object;
 	
 	public Message() {
@@ -40,12 +41,12 @@ public class Message implements Serializable{
 		Controller = controller;
 	}
 
-	public String getDiaglog() {
-		return diaglog;
+	public String getInfo() {
+		return info;
 	}
 
-	public void setDiaglog(String diaglog) {
-		this.diaglog = diaglog;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 	public Serializable getObject() {
@@ -54,6 +55,20 @@ public class Message implements Serializable{
 
 	public void setObject(Serializable object) {
 		this.object = object;
+	}
+
+	/**
+	 * @return the voucher
+	 */
+	public Voucher getVoucher() {
+		return voucher;
+	}
+
+	/**
+	 * @param voucher the voucher to set
+	 */
+	public void setVoucher(Voucher voucher) {
+		this.voucher = voucher;
 	}
 	
 }

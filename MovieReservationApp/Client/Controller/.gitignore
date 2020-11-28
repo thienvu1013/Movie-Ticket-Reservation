@@ -17,3 +17,16 @@
 /ReservationController$LogoutButtonSelected.class
 /ReservationController$MovieButton.class
 
+/ReservationController$MBackSelected.class
+/ReservationController$SBackSelected.class
+/ReservationController$TBackSelected.class
+/ReservationController$TimeButton.class
+/ReservationController$iBackSelected.class
+/ReservationController$SeatButton.class
+/ReservationController$infoSubmit.class
+/ReservationController$paySubmit.class
+/ReservationController$cancelButton.class
+/CancellationController$CBackSelected.class
+/CancellationController$CancelSubmit.class
+/MembershipController$MemBackSelected.class
+/MembershipController$MemPaySubmit.class
