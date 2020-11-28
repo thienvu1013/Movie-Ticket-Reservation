@@ -184,6 +184,26 @@ public class ModelController {
 			}
 		}
 	}
+	
+	public boolean checkReceipt(String receipt) {
+		int id = Integer.parseInt(receipt);
+		outMessage.setAction(1);
+		outMessage.setObject(id);
+		clientCtrl.sendMessage(outMessage);
+		inMessage = clientCtrl.getMessage();
+		boolean success = (boolean) inMessage.getObject();
+		return success;
+	}
+	
+	public boolean payMembership(ArrayList<String> cred) {
+		outMessage.setAction(1);
+		outMessage.setObject(cred);
+		clientCtrl.sendMessage(outMessage);
+		inMessage = clientCtrl.getMessage();
+		boolean success = (boolean) inMessage.getObject();
+		return success;
+	}
+	
 
 	/**
 	 * @return the clientCtrl

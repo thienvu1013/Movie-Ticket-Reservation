@@ -26,3 +26,7 @@
 /ReservationController$infoSubmit.class
 /ReservationController$paySubmit.class
 /ReservationController$cancelButton.class
+/CancellationController$CBackSelected.class
+/CancellationController$CancelSubmit.class
+/MembershipController$MemBackSelected.class
+/MembershipController$MemPaySubmit.class

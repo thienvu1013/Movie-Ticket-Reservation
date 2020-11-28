@@ -3,6 +3,8 @@
  */
 package Client.Controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import Client.View.SelectGUI;
 import Model.Message;
 
@@ -23,9 +25,41 @@ public class CancellationController {
 		this.modelCtrl = model;
 		outMessage = new Message();
 		inMessage = new Message();
+		selectGUI.addCancelButtonListener(new CancelSubmit(), new CBackSelected());
 	}
 	
-	
+	public void startView() {
+		selectGUI.getCl().show(selectGUI.getLayerPane(), "card7");
+
+	}
+
+
+	public class CBackSelected implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			selectGUI.getCl().show(selectGUI.getLayerPane(), "card4");
+		}
+
+	}
+
+	public class CancelSubmit implements ActionListener {
+
+		@Override
+		// need to modify this later once GUI is completed
+		public void actionPerformed(ActionEvent arg0) {
+			String receipt = selectGUI.getReceipt().getText();
+			if(modelCtrl.checkReceipt(receipt)) {
+				selectGUI.getResultLabel().setText("SUCCESSFULLY CANCELLED");
+			}
+			else {
+				selectGUI.getResultLabel().setText("CANCELLATION FAILED");
+			}
+			selectGUI.getReceipt().setText("");
+		}
+
+	}
 	
 
 	/**

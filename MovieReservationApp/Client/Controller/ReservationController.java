@@ -9,13 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-
-import Client.Controller.SelectionController.LoginButtonSelected;
-import Client.Controller.SelectionController.MemButtonSelected;
-import Client.Controller.SelectionController.NonMemButtonSelected;
 import Client.View.SelectGUI;
 import Model.Message;
-import Model.RegisteredUser;
 
 
 /**

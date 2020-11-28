@@ -5,7 +5,11 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 
+import Client.Controller.CancellationController.CBackSelected;
+import Client.Controller.CancellationController.CancelSubmit;
 import Client.Controller.LoginController.LoginButtonListener;
+import Client.Controller.MembershipController.MemBackSelected;
+import Client.Controller.MembershipController.MemPaySubmit;
 import Client.Controller.ReservationController.LogoutButtonSelected;
 import Client.Controller.ReservationController.MBackSelected;
 import Client.Controller.ReservationController.MovieButton;
@@ -50,6 +54,22 @@ public class SelectGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SelectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SelectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SelectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SelectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
 
         seatConfirm1 = new javax.swing.JLabel();
@@ -1732,6 +1752,16 @@ public class SelectGUI extends javax.swing.JFrame {
 	   }
 	   
 	   
+   }
+   
+   public void addCancelButtonListener(CancelSubmit cancel, CBackSelected cback) {
+	   canBack.addActionListener(cback);
+	   cancelSubmit.addActionListener(cancel);
+   }
+   
+   public void addMemberButtonListener(MemBackSelected memBack,MemPaySubmit memPay) {
+	   this.memBack.addActionListener(memBack);
+	   this.memPay.addActionListener(memPay);
    }
    
 
