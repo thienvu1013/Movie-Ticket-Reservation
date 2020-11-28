@@ -53,6 +53,7 @@ public class ReservationController {
 		// need to modify this later once GUI is completed
 		public void actionPerformed(ActionEvent arg0) {
 			// Action 2 - server should erase all saved data and bring back to homepage
+			selectCtrl.startApp();
 			outMessage.setAction(2);
 			modelCtrl.sendMessage(outMessage);
 			selectCtrl.startApp();

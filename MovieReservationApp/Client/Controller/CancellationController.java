@@ -29,6 +29,7 @@ public class CancellationController {
 	}
 	
 	public void startView() {
+		selectGUI.getCancelPane().setVisible(true);
 		selectGUI.getCl().show(selectGUI.getLayerPane(), "card7");
 
 	}

@@ -22,7 +22,6 @@ public class SelectionController {
 	private ModelController modelCtrl;
 	private Message outMessage;
 	private Message inMessage;
-	private int options = -1;
 	
 	public SelectionController(SelectGUI selectionView,CancellationController cancelCtrl, ReservationController resCtrl, MembershipController memCtrl,LoginController logCtrl, ModelController modelCtrl) {
 		this.selectionGUI = selectionView;
@@ -36,10 +35,11 @@ public class SelectionController {
 		cancelCtrl.setSelectCtrl(this);
 		memCtrl.setSelectCtrl(this);
 		selectionGUI.addMainButtonListener(new LoginButtonSelected(),
-				new NonMemButtonSelected(),
-				new MemButtonSelected());
-		selectionGUI.addSecondaryButtonListener(new CancelButtonSelected(),
-				new ReserveButtonSelected());
+											new NonMemButtonSelected(),
+											new MemButtonSelected(),
+											new CancelButtonSelected(),
+											new ReserveButtonSelected());
+		
 	}
 
 	

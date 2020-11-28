@@ -1541,7 +1541,7 @@ public class SelectGUI extends javax.swing.JFrame {
                 .addContainerGap(103, Short.MAX_VALUE))
         );
 
-        LayerPane.add(cancelPane, "card7");
+        LayerPane.add(cancelPane,"card7");
         
         
         
@@ -1699,19 +1699,25 @@ public class SelectGUI extends javax.swing.JFrame {
     //main window
     public void addMainButtonListener(LoginButtonSelected log,
     		NonMemButtonSelected non,
-			MemButtonSelected mem) {
+			MemButtonSelected mem,
+			CancelButtonSelected can,
+			ReserveButtonSelected res) {
     	loginButton.addActionListener(log);
     	payMemButton.addActionListener(mem);
     	nonMemButton.addActionListener(non);
+    	cancelButton.addActionListener(can);
+    	reserveButton.addActionListener(res);
     	
     }
     
     //secondary window
+    /**
+ 
     public void addSecondaryButtonListener(CancelButtonSelected can,
     		ReserveButtonSelected res) {
-    	cancelButton.addActionListener(can);
-    	reserveButton.addActionListener(res);
-    }
+    	this.cancelButton.addActionListener(can);
+    	this.reserveButton.addActionListener(res);
+    }*/
     
     //login window
    public void addLoginListener(LoginButtonListener log) {
