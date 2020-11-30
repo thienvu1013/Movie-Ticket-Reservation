@@ -25,8 +25,9 @@ public class ClientController {
 		Socket theSocket;
 		try {
 			theSocket = new Socket(servername, portname);
-			reader = new ObjectReader(theSocket);
+			reader = new ObjectReader(theSocket);	
 			writer = new ObjectWriter(theSocket);
+			
 		} catch (IOException e) {
 			System.out.println("Client failed to create socket");
 			e.printStackTrace();

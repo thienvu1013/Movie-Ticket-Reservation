@@ -5,6 +5,10 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 
+//import java.awt.*.Component;
+
+//import javax.swing.JButton;
+
 import Client.Controller.CancellationController.CBackSelected;
 import Client.Controller.CancellationController.CancelSubmit;
 import Client.Controller.LoginController.LoginButtonListener;
@@ -238,11 +242,7 @@ public class SelectGUI extends javax.swing.JFrame {
         
 //MAIN PANE---------------------------------------------------------------------------
         
-        
-        
-        
-        
-        
+    
         
         mainPane.setBackground(new java.awt.Color(29, 53, 87));
 

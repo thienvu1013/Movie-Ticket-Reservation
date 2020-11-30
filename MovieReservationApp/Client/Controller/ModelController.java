@@ -71,7 +71,7 @@ public class ModelController {
 	public boolean constructRticket() {
 		//set controller maybe
 		outMessage.setAction(2);
-		this.theTicket= tManager.generateTicket(this.user, theMovietime, theSeat, theMovie);
+		this.theTicket = tManager.generateTicket(this.user, theMovietime, theSeat, theMovie);
 		outMessage.setObject(theTicket);
 		clientCtrl.sendMessage(outMessage);
 		inMessage = clientCtrl.getMessage();
@@ -107,8 +107,10 @@ public class ModelController {
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<String> createListofMovies(Message message) {
-		this.movies =(ArrayList<Movie>) message.getObject();
+		
+		this.movies = (ArrayList<Movie>) message.getObject();
 		ArrayList<String> listofMovies = new ArrayList<String>();
+		
 		for(Movie m: this.movies) {
 			String id = Integer.toString(m.getMovieID());
 			String title = m.getTitle();
@@ -130,7 +132,6 @@ public class ModelController {
 			}
 		}
 		return null;
-
 	}
 	
 	public ArrayList<String> createMovieTimes(ShowTime theShowtime){
